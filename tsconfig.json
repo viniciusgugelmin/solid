@@ -3,9 +3,17 @@
     "esModuleInterop": true,
     "module": "es6",
     "moduleResolution": "node",
-    "outDir": "dist"
+    "outDir": "dist",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
   },
   "ts-node": {
     "esm": true
-  }
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
