@@ -25,17 +25,17 @@ export class CreateUserUseCase {
 
     await this.usersRepository.save(user);
 
-    await this.mailProvider.sendMail({
-      to: {
-        name: data.name,
-        email: data.email,
-      },
-      from: {
-        name: process.env.MAIL_NAME,
-        email: process.env.MAIL_ADDRESS,
-      },
-      subject: "Welcome!",
-      body: `<p>Hello <strong>${data.name}</strong>!</p>`,
-    });
+    /*await this.mailProvider.sendMail({
+              to: {
+                name: data.name,
+                email: data.email,
+              },
+              from: {
+                name: process.env.MAIL_NAME,
+                email: process.env.MAIL_ADDRESS,
+              },
+              subject: "Welcome!",
+              body: `<p>Hello <strong>${data.name}</strong>!</p>`,
+            });*/
   }
 }
