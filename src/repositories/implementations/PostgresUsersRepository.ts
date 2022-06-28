@@ -1,5 +1,5 @@
-import { IUsersRepository } from "./IUsersRepository";
-import { User } from "../entities/User";
+import { IUsersRepository } from "../IUsersRepository";
+import { User } from "../../entities/User";
 
 export class PostgresUsersRepository implements IUsersRepository {
   private users: User[] = [];
