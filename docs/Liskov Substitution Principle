@@ -1,0 +1,4 @@
+(portuguese)
+
+    A classe "CreateUserUseCase" (exemplo) recebe parâmetros que não importa quais sejam os seus tipos, desde que tenha
+as funções e propriedades da interface especificada.

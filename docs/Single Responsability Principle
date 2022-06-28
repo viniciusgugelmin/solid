@@ -1,0 +1,4 @@
+(portuguese)
+
+    A classe "CreateUserUseCase" (exemplo) possui uma única responsabilidade, que é a de criar um usuário. Ela não
+depende de um banco específico, não depende do formato que ele será salvo, a sua única função é de criar um usuário.

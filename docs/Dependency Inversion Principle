@@ -1,0 +1,4 @@
+(portuguese)
+
+    A classe "CreateUserUseCase" (exemplo) não depende diretamente da implementação de outra classe, depende da
+abstração (interface) da implementação.
