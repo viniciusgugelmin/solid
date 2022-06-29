@@ -1,18 +1,18 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { ICreateUserRequestDTO } from "./CreateUserDTO";
+import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
 import { IMailProvider } from "../../providers/IMailProvider";
 import dotenv from "dotenv";
 
 dotenv.config();
 
-export class CreateUserUseCase {
+export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private mailProvider: IMailProvider
   ) {}
 
-  async execute(data: ICreateUserRequestDTO) {
+  async execute(data: ICreateUserRequestDTO): Promise<void> {
     const userAlreadyExists = await this.usersRepository.findByEmail(
       data.email
     );

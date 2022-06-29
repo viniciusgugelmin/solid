@@ -5,12 +5,18 @@ import { db } from "../../application/database/prisma";
 export class UsersRepository implements IUsersRepository {
   constructor(private users = db.user) {}
 
+  async findAll(): Promise<User[]> {
+    return await this.users.findMany();
+  }
+
   async findByEmail(email: string): Promise<User> {
-    return await this.users.findUnique({
+    const user = await this.users.findUnique({
       where: {
         email,
       },
     });
+
+    return user || null;
   }
 
   async save(user: User): Promise<void> {
