@@ -1,14 +1,14 @@
 import { app } from "../../../application/api/app";
 import supertest from "supertest";
 import {
-  db,
   disconnectDB,
   truncateTable,
 } from "../../../application/database/prisma";
 import { UsersFactory } from "../../../factories/implementations/UsersFactory";
-import bcrypt from "bcrypt";
+import { UsersRepository } from "../../../repositories/implementations/UsersRepository";
 
-const usersFactory = new UsersFactory();
+const usersRepository = new UsersRepository();
+const usersFactory = new UsersFactory(usersRepository);
 
 describe("GetUsersController", () => {
   beforeEach(async () => await truncateTable("users"));
@@ -32,7 +32,10 @@ describe("GetUsersController", () => {
     let isTheSamePassword = false;
 
     if (firstUser) {
-      isTheSamePassword = bcrypt.compareSync(user.password, firstUser.password);
+      isTheSamePassword = usersRepository.comparePassword(
+        user.password,
+        firstUser.password
+      );
     }
 
     expect(status).toBe(200);

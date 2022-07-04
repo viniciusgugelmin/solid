@@ -1,10 +1,11 @@
-import {User} from "../../entities/User";
-import {db} from "../../application/database/prisma";
-import {faker} from "@faker-js/faker";
-import {IUsersFactory} from "../IUsersFactory";
-import bcrypt from "bcrypt";
+import { User } from "../../entities/User";
+import { faker } from "@faker-js/faker";
+import { IUsersFactory } from "../IUsersFactory";
+import { IUsersRepository } from "../../repositories/IUsersRepository";
 
 export class UsersFactory implements IUsersFactory {
+  constructor(private usersRepository: IUsersRepository) {}
+
   public generate(): User {
     return new User({
       name: faker.name.findName(),
@@ -14,11 +15,11 @@ export class UsersFactory implements IUsersFactory {
   }
 
   public async save(user: User): Promise<User> {
-    const hashedPassword = bcrypt.hashSync(user.password, 10);
+    const hashedPassword = this.usersRepository.hashPassword(user.password);
 
-    await db.user.create({
-      data: Object.assign({}, user, {password: hashedPassword}),
-    });
+    await this.usersRepository.save(
+      Object.assign({}, user, { password: hashedPassword })
+    );
 
     return user;
   }
