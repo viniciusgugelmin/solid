@@ -6,7 +6,7 @@
     "build": "npx tsc",
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/index.ts",
     "prod": "node dist/index.js",
-    "test": "dotenv -e .env.test jest -i --detectOpenHandles",
+    "test": "dotenv -e .env.test jest --passWithNoTests --noStackTrace --runInBand",
     "migrate": "npx prisma migrate dev",
     "migrate-test": "dotenv -e .env.test npx prisma migrate dev"
   },
@@ -24,10 +24,10 @@
     "@types/sqlstring": "^2.3.0",
     "@types/supertest": "^2.0.12",
     "@types/uuidv4": "^5.0.0",
-    "jest": "^28.1.2",
+    "jest": "^26.6.3",
     "prisma": "^4.0.0",
     "supertest": "^6.2.3",
-    "ts-jest": "^28.0.5",
+    "ts-jest": "^26.5.5",
     "ts-node": "^10.8.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"

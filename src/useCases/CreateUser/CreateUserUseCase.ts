@@ -3,6 +3,7 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
 import { IMailProvider } from "../../providers/IMailProvider";
 import dotenv from "dotenv";
+import { AppException } from "../../application/api/exceptions/AppException";
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ export class CreateUserUseCase implements ICreateUserUseCase {
     );
 
     if (userAlreadyExists) {
-      throw new Error("User already exists");
+      throw new AppException("User already exists");
     }
 
     const user = new User(data);
