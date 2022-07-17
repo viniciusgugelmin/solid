@@ -1,4 +1,4 @@
-import { AppException } from "../exceptions/AppException";
+import { AppException } from "../../../exceptions/implementations/AppException";
 import { Request, Response, NextFunction } from "express";
 import { responseHandler } from "./responseHandler";
 import { logErrorHandler } from "./logErrorHandler";

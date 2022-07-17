@@ -5,10 +5,10 @@
   "scripts": {
     "build": "npx tsc",
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/index.ts",
-    "prod": "node dist/index.js",
-    "test": "dotenv -e .env.test jest --passWithNoTests --noStackTrace --runInBand",
+    "start": "npm run migrate-prod && node dist/index.js",
+    "test": "dotenv -e .env.test npm run migrate && jest --passWithNoTests --noStackTrace --runInBand",
     "migrate": "npx prisma migrate dev",
-    "migrate-test": "dotenv -e .env.test npx prisma migrate dev"
+    "migrate-prod": "npx prisma migrate deploy"
   },
   "keywords": [],
   "author": "",

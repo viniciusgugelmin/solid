@@ -5,9 +5,14 @@
     "allowJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist"
   },
   "include": [
     "src/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "src/tests"
   ]
 }

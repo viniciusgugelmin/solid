@@ -3,27 +3,22 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
 import { IMailProvider } from "../../providers/IMailProvider";
 import dotenv from "dotenv";
-import { AppException } from "../../application/api/exceptions/AppException";
+import { IUsersHelper } from "../../helpers/Users/UsersDTO";
 
 dotenv.config();
 
 export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
-    private mailProvider: IMailProvider
+    private mailProvider: IMailProvider,
+    private usersHelper: IUsersHelper
   ) {}
 
   async execute(data: ICreateUserRequestDTO): Promise<void> {
-    const userAlreadyExists = await this.usersRepository.findByEmail(
-      data.email
-    );
-
-    if (userAlreadyExists) {
-      throw new AppException("User already exists");
-    }
+    await this.usersHelper.verifyIfEmailIsAlreadyInUse(data.email);
 
     const user = new User(data);
-    const hashedPassword = this.usersRepository.hashPassword(data.password);
+    const hashedPassword = this.usersHelper.hashPassword(data.password);
 
     await this.usersRepository.save(
       Object.assign({}, user, { password: hashedPassword })
