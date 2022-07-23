@@ -1,16 +1,16 @@
-import { server } from "../../../application/api/server";
+import { Server } from "../../../application/api/Server";
 import supertest from "supertest";
-import {
-  disconnectDB,
-  truncateTable,
-} from "../../../application/database/prisma";
+import { Database } from "../../../application/database/Database";
 import { getUsersUseCase } from "../index";
 
-const app = server.app;
-
 describe("GetUsersController", () => {
-  beforeEach(async () => await truncateTable("users"));
-  afterAll(async () => await disconnectDB());
+  const server = new Server();
+  const app = server.app;
+
+  const database = new Database();
+
+  beforeEach(async () => await database.truncateTable("users"));
+  afterAll(async () => await database.disconnect());
 
   it("should return a response", async () => {
     jest

@@ -1,7 +1,6 @@
 import { UsersHelper } from "./UsersHelper";
-import { UsersRepository } from "../../repositories/implementations/UsersRepository";
+import { usersRepository } from "../../repositories/Users";
 
-const usersRepository = new UsersRepository();
 const usersHelper = new UsersHelper(usersRepository);
 
 export { usersHelper };

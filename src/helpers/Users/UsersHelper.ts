@@ -1,6 +1,6 @@
 import { IUsersHelper } from "./UsersDTO";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { AppException } from "../../exceptions/implementations/AppException";
+import { IUsersRepository } from "../../repositories/Users/UsersDTO";
+import { AppException } from "../../exceptions/AppException";
 import bcrypt from "bcrypt";
 
 export class UsersHelper implements IUsersHelper {

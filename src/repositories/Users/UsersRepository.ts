@@ -1,9 +1,10 @@
-import { IUsersRepository } from "../IUsersRepository";
+import { IUsersRepository } from "./UsersDTO";
 import { User } from "../../entities/User";
-import { db } from "../../application/database/prisma";
+import { Database } from "../../application/database/Database";
 
 export class UsersRepository implements IUsersRepository {
-  constructor(private users = db.user) {}
+  private readonly database = new Database();
+  private readonly users = this.database.db.user;
 
   async findAll(): Promise<User[]> {
     return await this.users.findMany();

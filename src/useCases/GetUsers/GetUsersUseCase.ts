@@ -1,4 +1,4 @@
-import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { IUsersRepository } from "../../repositories/Users/UsersDTO";
 import { IGetUsersUseCase } from "./GetUsersDTO";
 import { User } from "../../entities/User";
 

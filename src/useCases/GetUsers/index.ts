@@ -1,8 +1,6 @@
-import { UsersRepository } from "../../repositories/implementations/UsersRepository";
+import { usersRepository } from "../../repositories/Users";
 import { GetUsersUseCase } from "./GetUsersUseCase";
 import { GetUsersController } from "./GetUsersController";
-
-const usersRepository = new UsersRepository();
 
 const getUsersUseCase = new GetUsersUseCase(usersRepository);
 

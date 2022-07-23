@@ -1,5 +1,5 @@
 import { User } from "../../entities/User";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
+import { IUsersRepository } from "../../repositories/Users/UsersDTO";
 import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
 import { IMailProvider } from "../../providers/IMailProvider";
 import dotenv from "dotenv";

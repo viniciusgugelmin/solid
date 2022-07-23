@@ -1,20 +1,17 @@
 import supertest from "supertest";
-import { server } from "../../../application/api/server";
-import { UsersFactory } from "../../../tests/factories/implementations/UsersFactory";
-import { UsersRepository } from "../../../repositories/implementations/UsersRepository";
+import { Server } from "../../../application/api/Server";
 import { createUserUseCase } from "../index";
-import {
-  disconnectDB,
-  truncateTable,
-} from "../../../application/database/prisma";
-
-const usersRepository = new UsersRepository();
-const usersFactory = new UsersFactory(usersRepository);
-const app = server.app;
+import { Database } from "../../../application/database/Database";
+import { usersFactory } from "../../../tests/factories/Users";
 
 describe("CreateUserController", () => {
-  beforeEach(async () => await truncateTable("users"));
-  afterAll(async () => await disconnectDB());
+  const server = new Server();
+  const app = server.app;
+
+  const database = new Database();
+
+  beforeEach(async () => await database.truncateTable("users"));
+  afterAll(async () => await database.disconnect());
 
   it("should return a response", async () => {
     jest

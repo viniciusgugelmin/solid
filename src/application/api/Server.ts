@@ -6,8 +6,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-class Server {
+export class Server {
   readonly app: express.Application = express();
+  readonly port = +process.env.PORT || 5000;
+  readonly domain = process.env.DOMAIN || `http://localhost:${this.port}`;
 
   constructor() {
     this.useConfig();
@@ -29,15 +31,8 @@ class Server {
   }
 
   init() {
-    const port = process.env.PORT || 3333;
-    const domain = process.env.DOMAIN;
-
-    this.app.listen(port, () => {
-      console.log(`Server is running on: ${domain}`);
+    this.app.listen(this.port, () => {
+      console.log(`Server is running on: ${this.domain}`);
     });
   }
 }
-
-const server = new Server();
-
-export { Server, server };

@@ -1,6 +1,4 @@
-import { IAppException } from "../IAppException";
-
-export class AppException implements IAppException {
+export class AppException {
   readonly message: string;
   readonly status: number;
 

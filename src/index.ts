@@ -1,3 +1,5 @@
-import { server } from "./application/api/server";
+import { Server } from "./application/api/Server";
+
+const server = new Server();
 
 server.init();

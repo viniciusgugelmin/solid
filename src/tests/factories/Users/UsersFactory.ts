@@ -1,10 +1,9 @@
 import { User } from "../../../entities/User";
 import { faker } from "@faker-js/faker";
-import { IUsersFactory } from "../IUsersFactory";
-import { IUsersRepository } from "../../../repositories/IUsersRepository";
+import { IUsersFactory } from "./UsersDTO";
 
 export class UsersFactory implements IUsersFactory {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor() {}
 
   public generate(): User {
     return new User({
