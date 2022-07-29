@@ -1,7 +1,7 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/Users/UsersDTO";
 import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
-import { IMailProvider } from "../../providers/IMailProvider";
+import { MailDTO } from "../../providers/IMailProvider";
 import dotenv from "dotenv";
 import { IUsersHelper } from "../../helpers/Users/UsersDTO";
 
@@ -10,7 +10,7 @@ dotenv.config();
 export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
-    private mailProvider: IMailProvider,
+    private mailProvider: MailDTO,
     private usersHelper: IUsersHelper
   ) {}
 
