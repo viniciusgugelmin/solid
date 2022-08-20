@@ -1,7 +1,7 @@
 import { Server } from "../../../application/api/Server";
 import supertest from "supertest";
-import { Database } from "../../../application/database/Database";
 import { getUsersUseCase } from "../index";
+import { Database } from "../../../application/config/Database";
 
 describe("GetUsersController", () => {
   const server = new Server();

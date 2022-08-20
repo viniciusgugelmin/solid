@@ -1,8 +1,8 @@
 import supertest from "supertest";
 import { Server } from "../../../application/api/Server";
 import { createUserUseCase } from "../index";
-import { Database } from "../../../application/database/Database";
 import { usersFactory } from "../../../tests/factories/Users";
+import { Database } from "../../../application/config/Database";
 
 describe("CreateUserController", () => {
   const server = new Server();

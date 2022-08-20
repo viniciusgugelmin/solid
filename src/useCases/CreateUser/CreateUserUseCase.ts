@@ -1,16 +1,16 @@
 import { User } from "../../entities/User";
 import { IUsersRepository } from "../../repositories/Users/UsersDTO";
 import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
-import { MailDTO } from "../../providers/IMailProvider";
 import dotenv from "dotenv";
 import { IUsersHelper } from "../../helpers/Users/UsersDTO";
+import { IMailProvider } from "../../providers/Mail/MailDTO";
 
 dotenv.config();
 
 export class CreateUserUseCase implements ICreateUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
-    private mailProvider: MailDTO,
+    private mailProvider: IMailProvider,
     private usersHelper: IUsersHelper
   ) {}
 

@@ -1,6 +1,6 @@
 import { IUsersRepository } from "./UsersDTO";
 import { User } from "../../entities/User";
-import { Database } from "../../application/database/Database";
+import { Database } from "../../application/config/Database";
 
 export class UsersRepository implements IUsersRepository {
   private readonly database = new Database();
