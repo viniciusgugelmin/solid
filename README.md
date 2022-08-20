@@ -41,11 +41,23 @@ issues).
 
 ### Usage
 
+Clone the repository
+
 ```bash
 $ git clone https://github.com/viniciusgugelmin/solid
 
 $ cd solid
+```
 
+Run the application with docker
+
+```bash
+$ docker-compose up
+```
+
+or
+
+```bash
 $ npm install
 
 $ npm run dev
