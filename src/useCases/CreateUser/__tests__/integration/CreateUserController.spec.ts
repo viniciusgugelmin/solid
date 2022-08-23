@@ -1,8 +1,7 @@
 import supertest from "supertest";
-import { Server } from "../../../application/api/Server";
-import { createUserUseCase } from "../index";
-import { usersFactory } from "../../../tests/factories/Users";
-import { Database } from "../../../application/config/Database";
+import { Server } from "../../../../application/api/Server";
+import { usersFactory } from "../../../../tests/factories/Users";
+import { Database } from "../../../../application/config/Database";
 
 describe("CreateUserController", () => {
   const server = new Server();
@@ -14,10 +13,6 @@ describe("CreateUserController", () => {
   afterAll(async () => await database.disconnect());
 
   it("should return a response", async () => {
-    jest
-      .spyOn(createUserUseCase, "execute")
-      .mockImplementationOnce(async () => {});
-
     const user = usersFactory.generate();
     const { status, body } = await supertest(app).post("/api/users").send(user);
 

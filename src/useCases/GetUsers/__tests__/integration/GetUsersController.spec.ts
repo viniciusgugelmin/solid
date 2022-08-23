@@ -1,7 +1,6 @@
-import { Server } from "../../../application/api/Server";
+import { Server } from "../../../../application/api/Server";
 import supertest from "supertest";
-import { getUsersUseCase } from "../index";
-import { Database } from "../../../application/config/Database";
+import { Database } from "../../../../application/config/Database";
 
 describe("GetUsersController", () => {
   const server = new Server();
@@ -13,10 +12,6 @@ describe("GetUsersController", () => {
   afterAll(async () => await database.disconnect());
 
   it("should return a response", async () => {
-    jest
-      .spyOn(getUsersUseCase, "execute")
-      .mockImplementationOnce(async () => []);
-
     const { status, body } = await supertest(app).get("/api/users").send();
 
     expect(status).toBe(200);
