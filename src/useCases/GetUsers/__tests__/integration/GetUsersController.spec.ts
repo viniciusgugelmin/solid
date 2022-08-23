@@ -1,5 +1,6 @@
-import { Server } from "../../../../application/api/Server";
+// @ts-ignore
 import supertest from "supertest";
+import { Server } from "../../../../application/api/Server";
 import { Database } from "../../../../application/config/Database";
 
 describe("GetUsersController", () => {
