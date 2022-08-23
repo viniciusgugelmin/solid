@@ -1,5 +1,5 @@
 import { Server } from "../../../../application/api/Server";
-import supertest from "supertest";
+import * as supertest from "supertest";
 import { Database } from "../../../../application/config/Database";
 
 describe("GetUsersController", () => {
