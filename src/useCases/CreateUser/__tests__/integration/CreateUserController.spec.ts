@@ -1,4 +1,5 @@
-import * as supertest from "supertest";
+// @ts-ignore
+import supertest from "supertest";
 import { Server } from "../../../../application/api/Server";
 import { usersFactory } from "../../../../tests/factories/Users";
 import { Database } from "../../../../application/config/Database";
