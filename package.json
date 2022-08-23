@@ -5,10 +5,14 @@
   "scripts": {
     "build": "npx tsc",
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/index.ts",
+    "d:dev": "docker-compose up",
     "start": "npx prisma migrate deploy && node dist/index.js",
     "test": "dotenv -e .env.test npx prisma migrate dev && jest --passWithNoTests --noStackTrace --runInBand",
     "test:int": "dotenv -e .env.test npx prisma migrate dev && jest --passWithNoTests --noStackTrace --runInBand --coverage --testPathPattern=integration",
-    "test:unit": "dotenv -e .env.test npx prisma migrate dev && jest --passWithNoTests --noStackTrace --runInBand --coverage --testPathPattern=unit"
+    "test:unit": "dotenv -e .env.test npx prisma migrate dev && jest --passWithNoTests --noStackTrace --runInBand --coverage --testPathPattern=unit",
+    "d:test": "docker-compose -f docker-compose-test.yml run node_app npm run test",
+    "d:test:int": "docker-compose -f docker-compose-test.yml run node_app npm run test:int",
+    "d:test:unit": "docker-compose -f docker-compose-test.yml run node_app npm run test:unit"
   },
   "keywords": [],
   "author": "",
