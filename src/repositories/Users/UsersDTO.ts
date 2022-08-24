@@ -6,6 +6,8 @@ interface IUsersRepository {
   findByEmail(email: string): Promise<User> | null;
 
   save(user: User): Promise<void>;
+
+  saveMany(users: User[]): Promise<void>;
 }
 
 export { IUsersRepository };
