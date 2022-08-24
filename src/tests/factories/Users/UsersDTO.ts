@@ -1,11 +1,6 @@
 import { User } from "../../../entities/User";
+import { IFactory } from "../FactoryDTO";
 
-interface IUsersFactory {
-  generate(): User;
-
-  generateMany(amount: number): User[];
-
-  save(users: User[]): Promise<void>;
-}
+type IUsersFactory = IFactory<User>;
 
 export { IUsersFactory };

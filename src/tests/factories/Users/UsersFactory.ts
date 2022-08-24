@@ -38,6 +38,6 @@ export class UsersFactory implements IUsersFactory {
       };
     });
 
-    await this.usersRepository.saveMany(usersMapped);
+    await this.usersRepository.createMany(usersMapped);
   }
 }

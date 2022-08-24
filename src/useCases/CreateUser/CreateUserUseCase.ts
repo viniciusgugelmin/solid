@@ -20,7 +20,7 @@ export class CreateUserUseCase implements ICreateUserUseCase {
     const user = new User(data);
     const hashedPassword = this.usersHelper.hashPassword(data.password);
 
-    await this.usersRepository.save(
+    await this.usersRepository.create(
       Object.assign({}, user, { password: hashedPassword })
     );
 

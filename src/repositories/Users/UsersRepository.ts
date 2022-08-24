@@ -1,6 +1,6 @@
-import {IUsersRepository} from "./UsersDTO";
-import {User} from "../../entities/User";
-import {Database} from "../../application/config/Database";
+import { IUsersRepository } from "./UsersDTO";
+import { User } from "../../entities/User";
+import { Database } from "../../application/config/Database";
 
 export class UsersRepository implements IUsersRepository {
   private readonly database = new Database();
@@ -18,13 +18,13 @@ export class UsersRepository implements IUsersRepository {
     });
   }
 
-  async save(user: User): Promise<void> {
+  async create(user: User): Promise<void> {
     await this.users.create({
       data: user,
     });
   }
 
-  async saveMany(users: User[]): Promise<void> {
+  async createMany(users: User[]): Promise<void> {
     await this.users.createMany({
       data: users,
     });
