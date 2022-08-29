@@ -1,7 +1,6 @@
 import { User } from "../../../entities/User";
+import { IFactory } from "../FactoryDTO";
 
-interface IUsersFactory {
-  generate(): User;
-}
+type IUsersFactory = IFactory<User>;
 
 export { IUsersFactory };

@@ -5,6 +5,13 @@
 ## Environment variables
 .env
 .env.test
+.env.development
 
 ## Tests
 /coverage
+
+## Message Broker
+definitions.json
+
+## Docker
+/.docker

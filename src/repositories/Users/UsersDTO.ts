@@ -1,11 +1,8 @@
 import { User } from "../../entities/User";
+import { IRepository } from "../IRepository";
 
-interface IUsersRepository {
-  findAll(): Promise<User[]>;
-
+type IUsersRepository = IRepository<User> & {
   findByEmail(email: string): Promise<User> | null;
-
-  save(user: User): Promise<void>;
-}
+};
 
 export { IUsersRepository };

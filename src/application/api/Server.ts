@@ -2,9 +2,6 @@ import express from "express";
 import cors from "cors";
 import { routes } from "./routes/routes";
 import { errorHandler } from "./handlers/errorHandler";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 export class Server {
   readonly app: express.Application = express();

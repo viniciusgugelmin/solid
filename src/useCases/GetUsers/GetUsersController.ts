@@ -9,14 +9,12 @@ export class GetUsersController implements IController {
   async handle(req: Request, res: Response): Promise<Response> {
     const users = await this.getUsersUseCase.execute();
 
-    return res
-      .status(200)
-      .json(
-        responseHandler({
-          message: "Users retrieved",
-          status: 200,
-          data: users,
-        })
-      );
+    return res.status(200).json(
+      responseHandler({
+        message: "Users retrieved",
+        status: 200,
+        data: users,
+      })
+    );
   }
 }

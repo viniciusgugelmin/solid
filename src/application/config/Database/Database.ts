@@ -1,6 +1,7 @@
 import pkg from "@prisma/client";
+import { IDatabase } from "./DatabaseDTO";
 
-export class Database {
+export class Database implements IDatabase {
   readonly db: pkg.PrismaClient;
 
   constructor() {

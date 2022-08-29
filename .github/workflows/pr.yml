@@ -1,5 +1,19 @@
 name: PullRequest
 on: [ pull_request ]
+env:
+  PORT: ${{ secrets.PORT }}
+  MAIL_NAME: ${{ secrets.MAIL_NAME }}
+  MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
+  POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  POSTGRES_PORT: 5432
+  POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  RABBITMQ_PORT: 5672
+  RABBITMQ_COMUNICATION_PORT: 15672
+  RABBITMQ_DEFAULT_USER: ${{ secrets.RABBITMQ_DEFAULT_USER }}
+  RABBITMQ_DEFAULT_PASS: ${{ secrets.RABBITMQ_DEFAULT_PASS }}
+  MESSAGE_BROKER_URI: ${{ secrets.MESSAGE_BROKER_URI }}
 jobs:
   PullRequest:
     runs-on: ubuntu-latest
@@ -9,12 +23,21 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
+          envkey_PORT: ${{ secrets.PORT }}
           envkey_MAIL_NAME: ${{ secrets.MAIL_NAME }}
           envkey_MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
           envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          envkey_POSTGRES_PORT: 5432
           envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_RABBITMQ_PORT: 5672
+          envkey_RABBITMQ_COMUNICATION_PORT: 15672
+          envkey_RABBITMQ_DEFAULT_USER: ${{ secrets.RABBITMQ_DEFAULT_USER }}
+          envkey_RABBITMQ_DEFAULT_PASS: ${{ secrets.RABBITMQ_DEFAULT_PASS }}
+          envkey_MESSAGE_BROKER_URI: ${{ secrets.MESSAGE_BROKER_URI }}
           file_name: .env.test
-      - name: Run tests
-        run: npm run d:test
+      - name: Run CI build
+        run: npm run ci:build
+      - name: Run CI tests
+        run: npm run ci:test
