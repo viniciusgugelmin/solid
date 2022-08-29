@@ -23,5 +23,7 @@ jobs:
           envkey_RABBITMQ_DEFAULT_PASS: ${{ secrets.RABBITMQ_DEFAULT_PASS }}
           enkey_MESSAGE_BROKER_URI: ${{ secrets.MESSAGE_BROKER_URI }}
           file_name: .env.test
-      - name: Run tests
-        run: npm run test:docker
+      - name: Run CI build
+        run: npm run ci:build
+      - name: Run CI tests
+        run: npm run ci:test
