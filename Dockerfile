@@ -1,13 +1,13 @@
 FROM node:16
 
-WORKDIR /usr/src/
+WORKDIR /app
 
 COPY . .
 
 EXPOSE 5000
 
-RUN npm i
-RUN npm run build
+RUN npm i && npm run build
+RUN npm run migration:run
 
 CMD ["npm", "start"]
 

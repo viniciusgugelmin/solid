@@ -1,17 +1,18 @@
 // @ts-ignore
 import supertest from "supertest";
 import { Server } from "../../../../application/api/Server";
-import { Database } from "../../../../application/config/Database";
+import { database } from "../../../../application/config/Database";
 import { usersFactory } from "../../../../tests/factories/Users";
 
 describe("GetUsersController", () => {
   const server = new Server();
   const app = server.app;
 
-  const database = new Database();
-
   beforeEach(async () => await database.truncateTable("users"));
-  afterAll(async () => await database.disconnect());
+  afterAll(async () => {
+    await database.truncateTable("users");
+    await database.disconnect();
+  });
 
   it("should list all users", async () => {
     const users = usersFactory.generateMany(3);

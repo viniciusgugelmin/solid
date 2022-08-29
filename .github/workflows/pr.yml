@@ -17,4 +17,4 @@ jobs:
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
           file_name: .env.test
       - name: Run tests
-        run: npm run d:test
+        run: npm run test:docker

@@ -1,0 +1,71 @@
+{
+  "users": [
+    {
+      "name": "admin",
+      "password": "G84i8W1GKfilq4nW",
+      "tags": "administrator"
+    },
+    {
+      "name": "provisioner",
+      "password": "G84i8W1GKfilq4nW",
+      "tags": "management"
+    },
+    {
+      "name": "myidvhosts_ro",
+      "password": "G84i8W1GKfilq4nW",
+      "tags": "readonly"
+    },
+    {
+      "name": "myidvhosts_rw",
+      "password": "2WsrCKVecE7rg0J0",
+      "tags": "readwrite"
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    },
+    {
+      "name": "/myidvhosts"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "read": ".*",
+      "write": ".*"
+    },
+    {
+      "user": "provisioner",
+      "vhost": "/",
+      "configure": ".*",
+      "read": ".*",
+      "write": ".*"
+    },
+    {
+      "user": "myidvhosts_ro",
+      "vhost": "/myidvhosts",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "myidvhosts_rw",
+      "vhost": "/myidvhosts",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "queues": [
+    {
+      "name": "email",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ]
+}

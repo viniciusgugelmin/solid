@@ -1,0 +1,17 @@
+{
+  "users": [
+  ],
+  "vhosts": [
+  ],
+  "permissions": [
+  ],
+  "queues": [
+    {
+      "name": "email",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ]
+}

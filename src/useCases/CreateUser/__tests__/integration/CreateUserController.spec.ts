@@ -1,7 +1,7 @@
 import supertest from "supertest";
 import { Server } from "../../../../application/api/Server";
 import { usersFactory } from "../../../../tests/factories/Users";
-import { Database } from "../../../../application/config/Database";
+import { database } from "../../../../application/config/Database";
 import { MailProvider } from "../../../../providers/Mail/MailProvider";
 import { usersRepository } from "../../../../repositories/Users";
 import { usersHelper } from "../../../../helpers/Users";
@@ -10,13 +10,14 @@ describe("CreateUserController", () => {
   const server = new Server();
   const app = server.app;
 
-  const database = new Database();
-
   beforeEach(async () => {
     await database.truncateTable("users");
     jest.clearAllMocks();
   });
-  afterAll(async () => await database.disconnect());
+  afterAll(async () => {
+    await database.truncateTable("users");
+    await database.disconnect();
+  });
 
   it("should create an user", async () => {
     jest

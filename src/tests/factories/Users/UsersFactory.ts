@@ -13,7 +13,12 @@ export class UsersFactory implements IUsersFactory {
   public generate(): User {
     return new User({
       name: faker.name.findName(),
-      email: faker.internet.email(),
+      email: faker.internet.email(
+        faker.name.firstName(),
+        faker.name.lastName(),
+        faker.internet.domainName(),
+        { allowSpecialCharacters: true }
+      ),
       password: "123",
     });
   }
