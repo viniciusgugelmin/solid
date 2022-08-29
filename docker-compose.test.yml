@@ -37,7 +37,7 @@ services:
       - db-test
       - message-broker-test
     working_dir: /app
-    command: bash -c "npx prisma migrate dev && npm test"
+    command: bash -c "npm run test:migration:run && npm test"
     env_file:
       - .env.test
     volumes:

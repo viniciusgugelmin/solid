@@ -21,12 +21,14 @@
     "test:unit": "jest --passWithNoTests --noStackTrace -i --coverage --testPathPattern=unit",
     "test:int:watch": "npm run test:int -- --watch",
     "test:unit:watch": "npm run test:unit -- --watch",
-    "test:migration:run": "npm run test:load-envs prisma migrate dev",
+    "test:migration:run": "npm run test:load-envs prisma migrate deploy",
     "test:load-envs": "dotenv -e .env.test",
     "test:compose": "docker-compose -f docker-compose.test.yml --env-file .env.test",
     "test:compose:build": "npm run test:compose -- build",
     "test:docker": "npm run test:compose -- up",
-    "test:docker:down": "npm run test:compose -- down"
+    "test:docker:down": "npm run test:compose -- down",
+    "ci:build": "docker-compose -f docker-compose.test.yml build",
+    "ci:test": "docker-compose -f docker-compose.test.yml run solid-test bash -c 'npm run test:migration:run && npm test'"
   },
   "keywords": [],
   "author": "",
