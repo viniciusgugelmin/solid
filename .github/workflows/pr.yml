@@ -1,5 +1,15 @@
 name: PullRequest
 on: [ pull_request ]
+env:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: solid-test
+  POSTGRES_PORT: 5432
+  RABBITMQ_PORT: 5672
+  RABBITMQ_COMUNICATION_PORT: 15672
+  RABBITMQ_DEFAULT_USER: admin
+  RABBITMQ_DEFAULT_PASS: admin
+  DATABASE_URL: postgres://postgres:top_secret@drivent-postgres-test:5432/drivent_test?schema=public
 jobs:
   PullRequest:
     runs-on: ubuntu-latest
