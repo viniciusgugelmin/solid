@@ -6,8 +6,9 @@ COPY . .
 
 EXPOSE 5000
 
-RUN npm i && npm run build
-RUN npm run migration:run
+RUN npm install --force
+RUN npx prisma generate
+RUN npm run build
 
 CMD ["npm", "start"]
 
