@@ -1,15 +1,5 @@
 name: PullRequest
 on: [ pull_request ]
-env:
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: solid-test
-  POSTGRES_PORT: 5432
-  RABBITMQ_PORT: 5672
-  RABBITMQ_COMUNICATION_PORT: 15672
-  RABBITMQ_DEFAULT_USER: admin
-  RABBITMQ_DEFAULT_PASS: admin
-  DATABASE_URL: postgres://postgres:top_secret@drivent-postgres-test:5432/drivent_test?schema=public
 jobs:
   PullRequest:
     runs-on: ubuntu-latest
@@ -24,7 +14,13 @@ jobs:
           envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          envkey_POSTGRES_PORT: 5432
           envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_RABBITMQ_PORT: 5672
+          envkey_RABBITMQ_COMUNICATION_PORT: 15672
+          envkey_RABBITMQ_DEFAULT_USER: ${{ secrets.RABBITMQ_DEFAULT_USER }}
+          envkey_RABBITMQ_DEFAULT_PASS: ${{ secrets.RABBITMQ_DEFAULT_PASS }}
+          enkey_MESSAGE_BROKER_URI: ${{ secrets.MESSAGE_BROKER_URI }}
           file_name: .env.test
       - name: Run tests
         run: npm run test:docker
