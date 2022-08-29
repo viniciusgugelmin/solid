@@ -9,6 +9,7 @@ jobs:
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
+          envkey_PORT: ${{ secrets.PORT }}
           envkey_MAIL_NAME: ${{ secrets.MAIL_NAME }}
           envkey_MAIL_ADDRESS: ${{ secrets.MAIL_ADDRESS }}
           envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
