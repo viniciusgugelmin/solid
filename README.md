@@ -22,16 +22,14 @@
 
 <details open="open">
   <summary><h2 style="display: inline-block">📜 Abstract</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
+  
+- [About The Project](#about-the-project)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Contact](#contact)
 </details>
 
+<a name="about-the-project"></a>
 ## 📋 About The Project
 
 API using Solid.
@@ -44,6 +42,7 @@ API using Solid.
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
 
+<a name="usage"></a>
 ## 🏁 Usage
 
 Clone the repository and go to the root directory
@@ -68,6 +67,7 @@ $ npm install
 $ npm run dev
 ```
 
+<a name="contributing"></a>
 ## 💻 Contributing
 
 Any contributions you make are **greatly appreciated**.
@@ -78,6 +78,7 @@ Any contributions you make are **greatly appreciated**.
 4. Push to the Branch (`git push origin feature/<featureName>`)
 5. Open a Pull Request
 
+<a name="contact"></a>
 ## 📧 Contact
 
 Vinícius Kruchelski Gugelmin - vinigugelmin@gmail.com
