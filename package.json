@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "prisma migrate deploy && node dist/index.js",
-    "setup": "ts-node src/config/envsSetup.ts",
+    "setup": "ts-node src/application/config/Setup/index.ts",
     "migration:run": "prisma migrate deploy",
     "seed": "prisma db seed",
     "dev": "nodemon --watch 'src/' --exec 'ts-node -r ./src/index.ts' -e ts",
