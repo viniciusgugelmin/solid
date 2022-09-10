@@ -20,7 +20,7 @@ export class Server {
   }
 
   useRoutes() {
-    this.app.use("/api", routes);
+    this.app.use("/", routes);
   }
 
   useHandlers() {
