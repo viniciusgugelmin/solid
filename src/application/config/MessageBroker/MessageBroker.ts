@@ -1,48 +1,42 @@
-import { Channel, connect, Connection, Message } from "amqplib";
-import { IMessageBroker } from "./MessageBrokerDTO";
-import dotenv from "dotenv";
-import { emailQueue } from "./Queues/Email";
-import { IQueue } from "./Queues/QueueDTO";
+import { Channel, Message } from "amqplib";
+import { IMessageBroker, messageBody } from "./MessageBrokerDTO";
+import { AbstractMessageBroker } from "./AbstractMessageBroker";
+import { IQueue, queueName } from "./Queues/QueueDTO";
 
-dotenv.config();
-
-export class MessageBroker implements IMessageBroker {
-  private conn: Connection;
-  private channel: Channel;
-  private readonly queues: Array<{ queue: IQueue; name: string }> = [];
-
-  constructor(private uri: string) {
-    this.queues = [{ queue: emailQueue, name: "email" }];
+export class MessageBroker
+  extends AbstractMessageBroker
+  implements IMessageBroker
+{
+  constructor(messageBrokerURI: string) {
+    super(messageBrokerURI);
   }
 
   async init() {
-    const instance = new MessageBroker(process.env.MESSAGE_BROKER_URI);
+    await super.init();
+  }
 
-    await this.startConnection();
+  async getQueues(queues: IQueue[]) {
+    for (const queue of queues) {
+      if (!queue) continue;
 
-    for (const { queue, name } of this.queues) {
-      await this.channel.assertQueue(name);
-      await queue.listen(instance, this.channel);
+      this.queues.push({ queue, name: queue.name });
     }
+
+    await this.listenQueues(this);
   }
 
-  private async startConnection(): Promise<void> {
-    this.conn = await connect(this.uri);
-    this.channel = await this.conn.createChannel();
-  }
-
-  async sendToQueue(queueName: string, body: any): Promise<boolean> {
-    return this.channel.sendToQueue(queueName, Buffer.from(body));
+  async sendToQueue(queueName: queueName, body: messageBody): Promise<boolean> {
+    return this.channel.sendToQueue(queueName, MessageBroker.toMessage(body));
   }
 
   async consume(
-    queue: string,
+    queue: queueName,
     channel: Channel,
     callback: (message: Message) => void
   ) {
     await channel.consume(queue, (message: Message) => {
       callback(message);
-      this.channel.ack(message);
+      channel.ack(message);
     });
   }
 }

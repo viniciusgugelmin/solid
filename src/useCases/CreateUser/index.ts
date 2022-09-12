@@ -1,8 +1,8 @@
-import { usersRepository } from "../../repositories/Users";
+import { usersRepository } from "../../repositories";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 import { CreateUserController } from "./CreateUserController";
-import { usersHelper } from "../../helpers/Users";
-import { mailProvider } from "../../providers/Mail";
+import { usersHelper } from "../../helpers";
+import { mailProvider } from "../../providers";
 
 const createUserUseCase = new CreateUserUseCase(
   usersRepository,

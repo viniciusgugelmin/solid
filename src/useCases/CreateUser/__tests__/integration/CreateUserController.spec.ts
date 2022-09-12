@@ -3,8 +3,8 @@ import { Server } from "../../../../application/api/Server";
 import { usersFactory } from "../../../../tests/factories/Users";
 import { database } from "../../../../application/config/Database";
 import { MailProvider } from "../../../../providers/Mail/MailProvider";
-import { usersRepository } from "../../../../repositories/Users";
-import { usersHelper } from "../../../../helpers/Users";
+import { usersRepository } from "../../../../repositories";
+import { usersHelper } from "../../../../helpers";
 
 describe("CreateUserController", () => {
   const server = new Server();

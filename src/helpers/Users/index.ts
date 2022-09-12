@@ -1,5 +1,5 @@
 import { UsersHelper } from "./UsersHelper";
-import { usersRepository } from "../../repositories/Users";
+import { usersRepository } from "../../repositories";
 
 const usersHelper = new UsersHelper(usersRepository);
 

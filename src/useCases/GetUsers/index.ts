@@ -1,4 +1,4 @@
-import { usersRepository } from "../../repositories/Users";
+import { usersRepository } from "../../repositories";
 import { GetUsersUseCase } from "./GetUsersUseCase";
 import { GetUsersController } from "./GetUsersController";
 

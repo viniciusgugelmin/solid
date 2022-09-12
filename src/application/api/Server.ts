@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { routes } from "./routes/routes";
-import { errorHandler } from "./handlers/errorHandler";
+import "express-async-errors";
+import { emailQueue } from "../config/MessageBroker/Queues";
+import { messageBroker } from "../config/MessageBroker";
+import { routes } from "./routes";
+import { errorHandler } from "./handlers";
 
 export class Server {
   readonly app: express.Application = express();
@@ -19,6 +22,16 @@ export class Server {
     this.app.use(cors());
   }
 
+  useExternalConfig() {
+    messageBroker.init().then(() => {
+      console.log("Message broker is running");
+
+      messageBroker.getQueues([emailQueue]).then(() => {
+        console.log("Queues are being listened");
+      });
+    });
+  }
+
   useRoutes() {
     this.app.use("/", routes);
   }
@@ -28,8 +41,9 @@ export class Server {
   }
 
   init() {
-    this.app.listen(this.port, () => {
+    this.app.listen(this.port, async () => {
       console.log(`Server is running on: ${this.domain}`);
+      this.useExternalConfig();
     });
   }
 }

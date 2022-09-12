@@ -15,6 +15,20 @@ services:
     volumes:
       - database:/var/lib/postgresql/data
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    depends_on:
+      - db-development
+    ports:
+      - "5555:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    restart: unless-stopped
+
   message-broker-development:
     container_name: message-broker-development
     image: rabbitmq:3-management-alpine
@@ -41,7 +55,7 @@ services:
       - db-development
       - message-broker-development
     working_dir: /app
-    command: bash -c "npx prisma migrate dev && npm run dev"
+    command: bash -c "npx prisma migrate dev && npm i && npm run dev"
     env_file:
       - .env.development
     volumes:
@@ -51,6 +65,7 @@ services:
 
 volumes:
   database:
+  pgadmin-data:
   rabbitmq:
   rabbitmq-data:
   rabbitmq-logs:

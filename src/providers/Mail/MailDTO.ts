@@ -11,7 +11,7 @@ interface IMessage {
 }
 
 interface IMailProvider {
-  sendMail(message: IMessage): Promise<void>;
+  sendMail(message: IMessage, shouldQueue?: boolean): Promise<void>;
 }
 
 export { IMessage, IMailProvider };
