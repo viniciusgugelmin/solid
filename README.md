@@ -22,14 +22,16 @@
 
 <details open="open">
   <summary><h2 style="display: inline-block">📜 Abstract</h2></summary>
-  
+
 - [About The Project](#about-the-project)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Contact](#contact)
+
 </details>
 
 <a name="about-the-project"></a>
+
 ## 📋 About The Project
 
 API using Solid.
@@ -40,9 +42,12 @@ API using Solid.
 ![Express](https://img.shields.io/badge/Express-%23F05033.svg?style=for-the-badge&logo=express&logoColor=white)
 ![Postgresql](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=RabbitMQ&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
 
 <a name="usage"></a>
+
 ## 🏁 Usage
 
 Clone the repository and go to the root directory
@@ -53,21 +58,20 @@ $ git clone https://github.com/viniciusgugelmin/solid
 $ cd solid
 ```
 
+Run the command to create the environment variables files
+
+```bash
+$ npm run setup
+```
+
 Run the application with docker:
 
 ```bash
 $ docker-compose up
 ```
 
-Or if you prefer to run the application locally:
-
-```bash
-$ npm install
-
-$ npm run dev
-```
-
 <a name="contributing"></a>
+
 ## 💻 Contributing
 
 Any contributions you make are **greatly appreciated**.
@@ -78,7 +82,12 @@ Any contributions you make are **greatly appreciated**.
 4. Push to the Branch (`git push origin feature/<featureName>`)
 5. Open a Pull Request
 
+<a href="https://github.com/viniciusgugelmin/solid/blob/master/docs/commits-standard.png">
+Click here to see the commit/branch name standard
+</a>
+
 <a name="contact"></a>
+
 ## 📧 Contact
 
 Vinícius Kruchelski Gugelmin - vinigugelmin@gmail.com

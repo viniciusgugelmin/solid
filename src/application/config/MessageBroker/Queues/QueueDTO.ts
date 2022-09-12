@@ -1,8 +1,12 @@
-import {IMessageBroker} from "../MessageBrokerDTO";
-import {Channel} from "amqplib";
+import { IMessageBroker } from "../MessageBrokerDTO";
+import { Channel } from "amqplib";
+
+type queueName = "email";
 
 interface IQueue {
-    listen(messageBroker: IMessageBroker, channel: Channel): Promise<void>;
+  name: queueName;
+
+  listen(messageBroker: IMessageBroker, channel: Channel): Promise<void>;
 }
 
-export { IQueue };
+export { IQueue, queueName };

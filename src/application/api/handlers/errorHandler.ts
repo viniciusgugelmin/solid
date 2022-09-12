@@ -1,7 +1,6 @@
 import { AppException } from "../../../exceptions/AppException";
 import { Request, Response, NextFunction } from "express";
-import { responseHandler } from "./responseHandler";
-import { logErrorHandler } from "./logErrorHandler";
+import { responseHandler, logErrorHandler } from "./";
 
 export function errorHandler(
   err: AppException | Error,
