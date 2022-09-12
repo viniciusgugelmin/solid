@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { CreateUserUseCase } from "./CreateUserUseCase";
-import { IController } from "../../application/api/interfaces/IController";
-import { responseHandler } from "../../application/api/handlers";
+import { CreateUserUseCase } from "../../../../useCases/CreateUser/CreateUserUseCase";
+import { IController } from "../ControllerDTO";
+import { responseHandler } from "../../handlers";
 
 export class CreateUserController implements IController {
   constructor(private createUserUseCase: CreateUserUseCase) {}

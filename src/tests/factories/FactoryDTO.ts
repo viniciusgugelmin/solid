@@ -1,7 +1,9 @@
-export interface IFactory<T> {
-    generate(): T;
+interface IFactory<T> {
+  generate(): T;
 
-    generateMany(amount: number): T[];
+  generateMany(amount: number): T[];
 
-    save(items: T[]): Promise<void>;
+  save(items: T[]): Promise<void>;
 }
+
+export { IFactory };

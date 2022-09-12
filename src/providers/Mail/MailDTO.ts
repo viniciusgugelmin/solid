@@ -1,17 +1,19 @@
-interface IAddress {
+import { IView } from "../../views/ViewDTO";
+
+type IMailAddress = {
   name: string;
   email: string;
-}
+};
 
-interface IMessage {
-  to: IAddress;
-  from: IAddress;
+type IMailMessage = {
+  to: IMailAddress;
+  from: IMailAddress;
   subject: string;
-  body: string;
-}
+  view: IView;
+};
 
 interface IMailProvider {
-  sendMail(message: IMessage, shouldQueue?: boolean): Promise<void>;
+  sendMail(message: IMailMessage, shouldQueue?: boolean): Promise<void>;
 }
 
-export { IMessage, IMailProvider };
+export { IMailMessage, IMailProvider };

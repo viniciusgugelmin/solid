@@ -1,3 +1,4 @@
 import { mailProvider } from "./Mail";
+import { templateEngineProvider } from "./TemplateEngine";
 
-export { mailProvider };
+export { mailProvider, templateEngineProvider };

@@ -1,7 +1,7 @@
-import { IGetUsersUseCase } from "./GetUsersDTO";
-import { IController } from "../../application/api/interfaces/IController";
+import { IGetUsersUseCase } from "../../../../useCases/GetUsers/GetUsersDTO";
+import { IController } from "../ControllerDTO";
 import { Request, Response } from "express";
-import { responseHandler } from "../../application/api/handlers";
+import { responseHandler } from "../../handlers";
 
 export class GetUsersController implements IController {
   constructor(private getUsersUseCase: IGetUsersUseCase) {}
