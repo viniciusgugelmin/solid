@@ -1,6 +1,5 @@
 import { usersRepository } from "../../repositories";
 import { CreateUserUseCase } from "./CreateUserUseCase";
-import { CreateUserController } from "./CreateUserController";
 import { usersHelper } from "../../helpers";
 import { mailProvider } from "../../providers";
 
@@ -10,6 +9,4 @@ const createUserUseCase = new CreateUserUseCase(
   usersHelper
 );
 
-const createUserController = new CreateUserController(createUserUseCase);
-
-export { createUserUseCase, createUserController };
+export { createUserUseCase };

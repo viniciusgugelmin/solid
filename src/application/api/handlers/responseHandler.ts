@@ -1,10 +1,15 @@
-import { IResponse } from "../interfaces/IResponse";
-
-interface IResponseHandlerDTO {
+type IResponseHandlerDTO = {
   message: string;
   status: number;
   data?: {} | [];
-}
+};
+
+type IResponse = {
+  message: string;
+  status: string;
+  statusCode: number;
+  data: {} | [];
+};
 
 export function responseHandler({
   message,

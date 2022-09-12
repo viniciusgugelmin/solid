@@ -1,10 +1,10 @@
 import supertest from "supertest";
-import { Server } from "../../../../application/api/Server";
-import { usersFactory } from "../../../../tests/factories/Users";
-import { database } from "../../../../application/config/Database";
-import { MailProvider } from "../../../../providers/Mail/MailProvider";
-import { usersRepository } from "../../../../repositories";
-import { usersHelper } from "../../../../helpers";
+import { Server } from "../../../Server";
+import { usersFactory } from "../../../../../tests/factories/Users";
+import { database } from "../../../../config/Database";
+import { MailProvider } from "../../../../../providers/Mail/MailProvider";
+import { usersRepository } from "../../../../../repositories";
+import { usersHelper } from "../../../../../helpers";
 
 const server = new Server();
 const app = server.app;
@@ -19,7 +19,7 @@ afterAll(async () => {
   await database.disconnect();
 });
 
-describe("POST /users", () => {
+describe("CreateUserController", () => {
   const request = async (body: any) =>
     await supertest(app).post("/users").send(body);
 

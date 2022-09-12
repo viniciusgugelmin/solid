@@ -1,6 +1,6 @@
 import { IUsersHelper } from "./UsersDTO";
 import { IUsersRepository } from "../../repositories/Users/UsersDTO";
-import { AppException } from "../../exceptions/AppException";
+import { AppError } from "../../errors/AppError";
 import bcrypt from "bcrypt";
 
 export class UsersHelper implements IUsersHelper {
@@ -10,7 +10,7 @@ export class UsersHelper implements IUsersHelper {
     const user = await this.usersRepository.findByEmail(email);
 
     if (user) {
-      throw new AppException("Email is already in use");
+      throw new AppError("Email is already in use");
     }
   }
 
