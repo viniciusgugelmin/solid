@@ -17,7 +17,7 @@
     "dev:compose:build": "npm run dev:compose -- build",
     "dev:docker": "npm run dev:compose -- up",
     "dev:docker:down": "npm run dev:compose -- down",
-    "test": "npm run test:load-envs jest --passWithNoTests --noStackTrace -i",
+    "test": "jest --passWithNoTests --noStackTrace -i",
     "test:int": "jest --passWithNoTests --noStackTrace -i --coverage --testPathPattern=integration",
     "test:unit": "jest --passWithNoTests --noStackTrace -i --coverage --testPathPattern=unit",
     "test:int:watch": "npm run test:int -- --watch",
