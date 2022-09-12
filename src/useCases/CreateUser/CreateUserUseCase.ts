@@ -4,6 +4,7 @@ import { ICreateUserRequestDTO, ICreateUserUseCase } from "./CreateUserDTO";
 import dotenv from "dotenv";
 import { IUsersHelper } from "../../helpers/Users/UsersDTO";
 import { IMailProvider } from "../../providers/Mail/MailDTO";
+import { WelcomeEmailView } from "../../views/emails/Welcome/WelcomeEmailView";
 
 dotenv.config();
 
@@ -34,7 +35,9 @@ export class CreateUserUseCase implements ICreateUserUseCase {
         email: process.env.MAIL_ADDRESS,
       },
       subject: "Welcome!",
-      body: `<p>Hello <strong>${data.name}</strong>!</p>`,
+      view: new WelcomeEmailView({
+        userName: data.name,
+      }),
     });
   }
 }

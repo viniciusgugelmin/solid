@@ -1,12 +1,12 @@
 import { Channel, Message } from "amqplib";
 import { queueName } from "./Queues/QueueDTO";
-import { IMessage } from "../../../providers/Mail/MailDTO";
+import { IMailMessage } from "../../../providers/Mail/MailDTO";
 
 type messageBody = {
   from: number | "system";
   to: number | "user-email" | "everyone" | "system";
   subject: string;
-  body: IMessage | string;
+  body: IMailMessage | string;
   date: Date;
 };
 

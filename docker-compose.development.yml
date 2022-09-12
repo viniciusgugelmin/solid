@@ -62,6 +62,7 @@ services:
       - ./src:/app/src
       - ./prisma:/app/prisma
       - ./tsconfig.json:/app/tsconfig.json
+      - ./package.json:/app/package.json
 
 volumes:
   database:

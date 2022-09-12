@@ -1,11 +1,15 @@
 import nodemailer from "nodemailer";
-import { IMailProvider, IMessage } from "./MailDTO";
+import { IMailProvider, IMailMessage } from "./MailDTO";
 import { IMessageBroker } from "../../application/config/MessageBroker/MessageBrokerDTO";
+import { ITemplateEngineProvider } from "../TemplateEngine/TemplateEngineDTO";
 
 export class MailProvider implements IMailProvider {
   private transporter;
 
-  constructor(private messageBroker: IMessageBroker) {
+  constructor(
+    private messageBroker: IMessageBroker,
+    private templateEngineProvider: ITemplateEngineProvider
+  ) {
     this.transporter = nodemailer.createTransport({
       host: "smtp.mailtrap.io",
       port: 2525,
@@ -16,7 +20,7 @@ export class MailProvider implements IMailProvider {
     });
   }
 
-  async sendMail(message: IMessage, shouldQueue = true): Promise<void> {
+  async sendMail(message: IMailMessage, shouldQueue = true): Promise<void> {
     if (shouldQueue) {
       await this.messageBroker.sendToQueue("email", {
         from: "system",
@@ -38,7 +42,7 @@ export class MailProvider implements IMailProvider {
         address: message.from.email,
       },
       subject: message.subject,
-      html: message.body,
+      html: this.templateEngineProvider.compile(message.view),
     });
   }
 }
